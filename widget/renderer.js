@@ -2,7 +2,7 @@
 // The widget reads the auth token from the same localStorage key the main app uses.
 // When running locally, point to localhost. After deployment, change this to your
 // Render URL (e.g. https://neontasks-api.onrender.com).
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://collaborative-to-do-list.onrender.com/api';
 const REFRESH_INTERVAL_MS = 60_000; // re-fetch tasks every 60 seconds
 
 // ─── Clock ───────────────────────────────────────────────────────────────────
