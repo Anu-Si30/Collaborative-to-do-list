@@ -28,12 +28,13 @@ const io = new Server(server, {
 // Middleware
 const allowedOrigins = [
   'http://localhost:5173',
-  process.env.CLIENT_URL,
+  process.env.CLIENT_URL && process.env.CLIENT_URL.replace(/\/$/, '')
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    // origin is the domain the request is coming from (no trailing slash)
+    if (!origin || allowedOrigins.includes(origin.replace(/\/$/, ''))) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
