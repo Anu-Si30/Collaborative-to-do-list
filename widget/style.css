@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: transparent;
+  font-family: 'Inter', sans-serif;
+  -webkit-app-region: no-drag;
+  user-select: none;
+}
+
+.widget {
+  width: 220px;
+  background: rgba(10, 10, 20, 0.88);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  border-radius: 20px;
+  padding: 18px 16px 16px;
+  box-shadow:
+    0 0 30px rgba(0, 212, 255, 0.12),
+    0 8px 32px rgba(0, 0, 0, 0.6);
+  position: relative;
+  cursor: grab;
+  -webkit-app-region: drag;
+}
+
+.widget:active {
+  cursor: grabbing;
+}
+
+/* Close button */
+#close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  transition: color 0.2s;
+  line-height: 1;
+}
+#close-btn:hover {
+  color: #ff4d7d;
+}
+
+/* Clock */
+.clock-section {
+  text-align: center;
+  padding-bottom: 14px;
+}
+
+.time {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00d4ff;
+  letter-spacing: 2px;
+  text-shadow: 0 0 16px rgba(0, 212, 255, 0.7);
+  font-variant-numeric: tabular-nums;
+}
+
+.date {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0, 212, 255, 0.3), transparent);
+  margin-bottom: 14px;
+}
+
+/* Progress section */
+.progress-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.ring {
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.4));
+  -webkit-app-region: no-drag;
+}
+
+.ring-fill {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.5s ease;
+}
+
+.ring-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  fill: #00d4ff;
+  dominant-baseline: middle;
+}
+
+.ring-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  fill: rgba(255, 255, 255, 0.4);
+  dominant-baseline: middle;
+}
+
+.fraction {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 1px;
+}
+
+.status-msg {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-align: center;
+}

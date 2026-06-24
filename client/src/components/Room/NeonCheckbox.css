@@ -1,0 +1,45 @@
+.neon-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.neon-checkbox:hover:not(.disabled) {
+  border-color: var(--check-color);
+  box-shadow: 0 0 8px var(--check-color);
+}
+
+.neon-checkbox.checked {
+  background: var(--check-color);
+  border-color: var(--check-color);
+  box-shadow: 0 0 10px var(--check-color);
+}
+
+/* Disabled = another user's checkbox, read-only */
+.neon-checkbox.disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.checkmark {
+  width: 14px;
+  height: 14px;
+  color: var(--bg-color);
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  animation: drawCheck 0.3s forwards ease-out;
+}
+
+@keyframes drawCheck {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

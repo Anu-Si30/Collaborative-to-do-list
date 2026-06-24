@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Tasks Widget</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Drag handle (entire widget is draggable) -->
+  <div id="widget" class="widget">
+
+    <!-- Close button -->
+    <button id="close-btn" title="Close widget">✕</button>
+
+    <!-- Live clock -->
+    <div class="clock-section">
+      <div id="time" class="time">00:00:00</div>
+      <div id="date" class="date">Mon, 1 Jan</div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Progress ring -->
+    <div class="progress-section">
+      <svg class="ring" viewBox="0 0 100 100" width="100" height="100">
+        <!-- Track circle -->
+        <circle
+          class="ring-track"
+          cx="50" cy="50" r="40"
+          fill="none"
+          stroke="rgba(255,255,255,0.08)"
+          stroke-width="8"
+        />
+        <!-- Progress arc -->
+        <circle
+          id="ring-progress"
+          class="ring-fill"
+          cx="50" cy="50" r="40"
+          fill="none"
+          stroke="#00d4ff"
+          stroke-width="8"
+          stroke-linecap="round"
+          stroke-dasharray="251.2"
+          stroke-dashoffset="251.2"
+          transform="rotate(-90 50 50)"
+        />
+        <!-- Fraction text -->
+        <text id="ring-done" x="50" y="44" text-anchor="middle" class="ring-num">0</text>
+        <text x="50" y="58" text-anchor="middle" class="ring-label">tasks done</text>
+      </svg>
+
+      <div id="fraction" class="fraction">0 / 0</div>
+      <div id="status-msg" class="status-msg">Loading...</div>
+    </div>
+
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "neontasks-widget",
+  "version": "1.0.0",
+  "description": "Neon Tasks desktop widget — shows live time and task progress",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^31.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+.pending-requests {
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.pending-requests h4 {
+  color: var(--accent-pink);
+  margin-bottom: 1rem;
+}
+
+.request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+
+.request-item .btn {
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+}

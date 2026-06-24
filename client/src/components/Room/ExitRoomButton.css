@@ -1,0 +1,15 @@
+.exit-room-btn {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.exit-room-btn:hover {
+  background: rgba(255, 51, 51, 0.1);
+  color: var(--error-color);
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.2);
+}

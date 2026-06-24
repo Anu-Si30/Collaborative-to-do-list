@@ -1,0 +1,57 @@
+.todo-board {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.board-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+/* Responsive grid — col count driven by JS via --grid-cols */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols, 1), minmax(0, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+/* 1 card — center it but allow it to be wider */
+.users-grid[style*="--grid-cols: 1"] > * {
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 10+ members → horizontal scroll */
+.users-grid--scroll {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding-bottom: 1rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-blue) transparent;
+  justify-items: unset;
+}
+
+.users-grid--scroll::-webkit-scrollbar {
+  height: 6px;
+}
+
+.users-grid--scroll::-webkit-scrollbar-thumb {
+  background: var(--accent-blue);
+  border-radius: 3px;
+}
+
+.users-grid--scroll > * {
+  flex-shrink: 0;
+  width: 300px;
+}

@@ -1,0 +1,88 @@
+.add-todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-error {
+  background: rgba(255, 50, 50, 0.12);
+  border: 1px solid rgba(255, 50, 50, 0.4);
+  color: #ff6b6b;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+/* Date input styled to match theme */
+.date-input {
+  width: 100%;
+  color-scheme: dark;
+  cursor: pointer;
+}
+.date-input::-webkit-calendar-picker-indicator {
+  filter: invert(0.8) sepia(1) saturate(5) hue-rotate(170deg);
+  cursor: pointer;
+}
+
+/* Room chip multi-select */
+.room-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.no-rooms-hint {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.room-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: var(--font-sans);
+}
+
+.room-chip:hover {
+  border-color: var(--accent-blue);
+  color: var(--accent-blue);
+}
+
+.room-chip.selected {
+  border-color: var(--accent-blue);
+  background: rgba(0, 212, 255, 0.12);
+  color: var(--accent-blue);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.2);
+}
+
+.room-chip-check {
+  font-size: 0.75rem;
+  min-width: 0.75rem;
+  text-align: center;
+}
+
+.room-chip-code {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-left: 0.2rem;
+}
+
+.room-chip.selected .room-chip-code {
+  color: rgba(0, 212, 255, 0.7);
+}
+
+.room-selector-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}

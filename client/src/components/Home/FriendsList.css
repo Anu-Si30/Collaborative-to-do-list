@@ -1,0 +1,45 @@
+.friends-list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.friends-list h4 {
+  color: var(--accent-blue);
+  margin-bottom: 1rem;
+}
+
+.no-friends {
+  color: var(--text-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.friend-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.friend-item:hover {
+  background: rgba(255,255,255,0.05);
+}
+
+.friend-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.friend-name {
+  font-size: 1.1rem;
+}

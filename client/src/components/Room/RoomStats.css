@@ -1,0 +1,33 @@
+.room-stats {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 212, 255, 0.05);
+  padding: 0.25rem 0.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.stats-text {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.stats-completed {
+  color: var(--accent-blue);
+  font-weight: bold;
+}
+
+.stats-total {
+  color: var(--text-muted);
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+}
+
+.progress-ring-circle {
+  transition: stroke-dashoffset 0.5s ease-in-out;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(0, 212, 255, 0.5));
+}

@@ -1,0 +1,41 @@
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.profile-avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-username {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.profile-email {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.profile-logout-btn {
+  width: 100%;
+  border: 1px solid var(--error-color);
+  color: var(--error-color);
+}
+
+.profile-logout-btn:hover {
+  background: rgba(255, 51, 51, 0.1);
+  box-shadow: 0 0 15px rgba(255, 51, 51, 0.3);
+}
