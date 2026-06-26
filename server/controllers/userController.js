@@ -196,3 +196,29 @@ export const rejectRoomInvite = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const updateColor = async (req, res) => {
+  try {
+    const { color } = req.body;
+    if (!color) {
+      return res.status(400).json({ message: 'Color is required' });
+    }
+
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    user.color = color;
+    await user.save();
+
+    res.json({ 
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      color: user.color 
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

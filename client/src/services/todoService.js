@@ -19,11 +19,15 @@ export const toggleTodo = async (todoId) => {
   return response.data;
 };
 
-// DELETE — remove todo (optionally from specific rooms)
-export const deleteTodo = async (todoId, roomIds = null) => {
-  const response = await api.delete(`/todos/${todoId}`, {
-    data: roomIds ? { roomIds } : {},
-  });
+// PUT — edit text on a single todo (and its synced copies)
+export const editTodo = async (todoId, text) => {
+  const response = await api.put(`/todos/${todoId}`, { text });
+  return response.data;
+};
+
+// DELETE — remove todo (optionally from all linked rooms)
+export const deleteTodo = async (todoId, deleteAll = false) => {
+  const response = await api.delete(`/todos/${todoId}${deleteAll ? '?all=true' : ''}`);
   return response.data;
 };
 

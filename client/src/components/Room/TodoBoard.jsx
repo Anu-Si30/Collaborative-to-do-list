@@ -42,17 +42,27 @@ const TodoBoard = ({ roomId, members = [] }) => {
       );
     };
 
+    const handleUpdated = (updatedTodo) => {
+      setTodos((prev) =>
+        prev.map((t) =>
+          t._id?.toString() === updatedTodo._id?.toString() ? updatedTodo : t
+        )
+      );
+    };
+
     const handleDeleted = ({ todoId }) => {
       setTodos((prev) => prev.filter((t) => t._id !== todoId));
     };
 
     socket.on('todo-added', handleAdded);
     socket.on('todo-toggled', handleToggled);
+    socket.on('todo-updated', handleUpdated);
     socket.on('todo-deleted', handleDeleted);
 
     return () => {
       socket.off('todo-added', handleAdded);
       socket.off('todo-toggled', handleToggled);
+      socket.off('todo-updated', handleUpdated);
       socket.off('todo-deleted', handleDeleted);
     };
   }, [socket, roomId]);

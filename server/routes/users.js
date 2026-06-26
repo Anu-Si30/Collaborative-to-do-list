@@ -8,7 +8,8 @@ import {
   getFriendsAndRequests,
   getRoomInvites,
   acceptRoomInvite,
-  rejectRoomInvite
+  rejectRoomInvite,
+  updateColor
 } from '../controllers/userController.js';
 import { protect } from '../middleware/auth.js';
 
@@ -27,5 +28,7 @@ router.get('/friends', getFriendsAndRequests);
 router.get('/room-invites', getRoomInvites);
 router.post('/room-invites/accept', acceptRoomInvite);
 router.post('/room-invites/reject', rejectRoomInvite);
+
+router.put('/color', updateColor); // PUT /api/users/color
 
 export default router;

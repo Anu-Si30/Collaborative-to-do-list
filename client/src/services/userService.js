@@ -48,3 +48,8 @@ export const rejectRoomInvite = async (roomId) => {
   const response = await api.post('/users/room-invites/reject', { roomId });
   return response.data;
 };
+
+export const updateUserColor = async (color) => {
+  const response = await api.put('/users/color', { color });
+  return response.data;
+};

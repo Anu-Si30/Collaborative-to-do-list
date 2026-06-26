@@ -161,3 +161,42 @@ export const deleteTodo = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// PUT /api/todos/:id
+// Edits task text on ALL todos sharing the same syncId (cross-room sync)
+export const updateTodo = async (req, res) => {
+  try {
+    const { text } = req.body;
+    if (!text || !text.trim()) {
+      return res.status(400).json({ message: 'Task text is required' });
+    }
+
+    const todo = await TodoItem.findById(req.params.id);
+    if (!todo) return res.status(404).json({ message: 'Todo not found' });
+
+    if (todo.owner.toString() !== req.user._id.toString()) {
+      return res.status(403).json({ message: 'Only the owner can edit this task' });
+    }
+
+    const newText = text.trim();
+
+    let linkedTodos;
+    if (todo.syncId) {
+      await TodoItem.updateMany({ syncId: todo.syncId }, { text: newText });
+      linkedTodos = await TodoItem.find({ syncId: todo.syncId }).populate('owner', 'username color');
+    } else {
+      todo.text = newText;
+      await todo.save();
+      linkedTodos = [await TodoItem.findById(todo._id).populate('owner', 'username color')];
+    }
+
+    // Emit to all affected rooms
+    for (const t of linkedTodos) {
+      req.io.to(t.room.toString()).emit('todo-updated', t);
+    }
+
+    res.json(linkedTodos);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
