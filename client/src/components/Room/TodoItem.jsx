@@ -13,11 +13,14 @@ const TodoItem = ({ todo, userColor, isOwn, onToggle }) => {
   const [isSaving, setIsSaving] = useState(false);
   // Optimistic local state
   const [localCompleted, setLocalCompleted] = useState(todo.completed);
+  const [localText, setLocalText] = useState(todo.text);
 
   // Sync when the parent updates the todo (socket round-trip)
   useEffect(() => {
     setLocalCompleted(todo.completed);
-  }, [todo.completed]);
+    setLocalText(todo.text);
+    setEditText(todo.text);
+  }, [todo.completed, todo.text]);
 
   const handleToggle = async () => {
     if (!isOwn || isToggling) return;
@@ -55,17 +58,20 @@ const TodoItem = ({ todo, userColor, isOwn, onToggle }) => {
   };
 
   const handleEditSave = async () => {
-    if (!editText.trim() || editText === todo.text) {
+    if (!editText.trim() || editText === localText) {
       setIsEditing(false);
       return;
     }
     
     setIsSaving(true);
+    const previousText = localText;
     try {
+      setLocalText(editText); // Optimistically update text
       await editTodo(todo._id, editText);
       setIsEditing(false);
     } catch (err) {
       console.error('Failed to edit todo', err);
+      setLocalText(previousText); // Revert on failure
     } finally {
       setIsSaving(false);
     }
@@ -75,7 +81,7 @@ const TodoItem = ({ todo, userColor, isOwn, onToggle }) => {
     if (e.key === 'Enter') {
       handleEditSave();
     } else if (e.key === 'Escape') {
-      setEditText(todo.text);
+      setEditText(localText);
       setIsEditing(false);
     }
   };
@@ -110,7 +116,7 @@ const TodoItem = ({ todo, userColor, isOwn, onToggle }) => {
             </button>
           </div>
         ) : (
-          <span className="todo-text">{todo.text}</span>
+          <span className="todo-text">{localText}</span>
         )}
 
         {isOwn && !isEditing && (
